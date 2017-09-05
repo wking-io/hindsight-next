@@ -1,19 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Logo from './Logo';
+import WelcomeLinks from './WelcomeLinks';
 
-export default ({ pathname }) => (
+const Header = ({ pathname, isUser }) => (
   <header>
     <Link prefetch href="/">
-      <a className={pathname === '/' && 'is-active'}>Home</a>
+      <a>
+        <Logo />
+      </a>
     </Link>
 
-    <Link prefetch href="/about">
-      <a className={pathname === '/about' && 'is-active'}>About</a>
-    </Link>
-
-    <Link prefetch href="/login">
-      <a className={pathname === '/login' && 'is-active'}>Login</a>
-    </Link>
+    {isUser ? (
+      <div>
+        <Link prefetch href="/">
+          <a className={pathname === '/' && 'is-active'}>Dashboard</a>
+        </Link>
+        <Link prefetch href="/retros">
+          <a className={pathname === '/retros' && 'is-active'}>Retros</a>
+        </Link>
+      </div>
+    ) : (
+      <div>
+        <Link prefetch href="/about">
+          <a className={pathname === '/about' && 'is-active'}>About</a>
+        </Link>
+        <WelcomeLinks />
+      </div>
+    )}
 
     <style jsx>{`
       header {
@@ -30,3 +45,10 @@ export default ({ pathname }) => (
     `}</style>
   </header>
 );
+
+Header.propTypes = {
+  pathname: PropTypes.string.isRequired,
+  isUser: PropTypes.string.isRequired,
+};
+
+export default Header;

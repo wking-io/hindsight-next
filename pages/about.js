@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import App from '../components/App';
 import Header from '../components/Header';
 
-export default props => (
+const AboutPage = ({ url }) => (
   <App>
-    <Header pathname={props.url.pathname} />
+    <Header pathname={url.pathname} />
     <article>
       <h1>The Idea Behind This Example</h1>
       <p>
@@ -37,3 +38,11 @@ export default props => (
     </article>
   </App>
 );
+
+AboutPage.propTypes = {
+  url: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default AboutPage;

@@ -2,24 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import App from '../components/App';
 import Header from '../components/Header';
-import BigSell from '../components/BigSell';
-import Dashboard from '../components/Dashboard';
+import NotAuthorized from '../components/NotAuthorized';
+import RetroList from '../components/RetroList';
 import withData from '../lib/withData';
 import withUser from '../lib/withUser';
 
-const IndexPage = ({ url, isUser, logout }) => (
+const RetrosPage = ({ url, isUser }) => (
   <App>
-    <Header pathname={url.pathname} isUser={isUser} logout={logout} />
-    {isUser ? <Dashboard /> : <BigSell />}
+    <Header pathname={url.pathname} isUser={isUser} />
+    {isUser ? <RetroList /> : <NotAuthorized />}
   </App>
 );
 
-IndexPage.propTypes = {
+RetrosPage.propTypes = {
   url: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }).isRequired,
   isUser: PropTypes.string.isRequired,
-  logout: PropTypes.func.isRequired,
 };
 
-export default withData(withUser(IndexPage));
+export default withData(withUser(RetrosPage));

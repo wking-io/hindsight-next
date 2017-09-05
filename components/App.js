@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({ children }) => (
+const App = ({ children }) => (
   <main>
     {children}
     <style jsx global>{`
@@ -41,3 +42,9 @@ export default ({ children }) => (
     `}</style>
   </main>
 );
+
+App.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+};
+
+export default App;

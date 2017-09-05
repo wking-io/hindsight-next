@@ -4,9 +4,11 @@ import Header from '../components/Header';
 import Login from '../components/Login';
 import withData from '../lib/withData';
 
-export default withData(props => (
+const LoginPage = ({ url }) => (
   <App>
-    <Header pathname={props.url.pathname} />
-    <Login login={props.url.query.login === 'true' || false} />
+    <Header pathname={url.pathname} />
+    <Login login={url.query.login === 'true' || false} />
   </App>
-));
+);
+
+export default withData(LoginPage);

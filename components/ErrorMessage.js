@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({ message }) => (
+const ErrorMessage = ({ message }) => (
   <aside>
     {message}
     <style jsx>{`
@@ -13,3 +14,9 @@ export default ({ message }) => (
     `}</style>
   </aside>
 );
+
+ErrorMessage.propTypes = {
+  message: PropTypes.string.isRequired,
+};
+
+export default ErrorMessage;
