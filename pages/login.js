@@ -7,6 +7,6 @@ import withData from '../lib/withData';
 export default withData(props => (
   <App>
     <Header pathname={props.url.pathname} />
-    <Login />
+    <Login login={props.url.query.login === 'true' || false} />
   </App>
 ));

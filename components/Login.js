@@ -6,7 +6,7 @@ import { GC_USER_ID, GC_AUTH_TOKEN } from '../helpers/constants';
 
 class Login extends Component {
   state = {
-    login: true,
+    login: this.props.login,
     email: '',
     password: '',
     name: '',
@@ -46,6 +46,7 @@ class Login extends Component {
   render() {
     return (
       <div>
+        {console.log(this.props.login)}
         <h4>{this.state.login ? 'Login' : 'Sign Up'}</h4>
         <div>
           {!this.state.login && (
